@@ -42,7 +42,7 @@ const userSchema = new Schema(
 userSchema.post("save", handleMongooseError);
 
 const registerSchema = Joi.object({
-  name: Joi.string().min(2).max(16).required(),
+  name: Joi.string().min(2).max(50).required(),
   email: Joi.string().pattern(emailRegex).required().messages({
     "string.pattern.base": "email should looks like: example@example.com",
   }),
