@@ -36,15 +36,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
