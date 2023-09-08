@@ -1,0 +1,233 @@
+{
+  "swaggerDefinition": {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API Documentation",
+      "version": "1.0",
+      "description": "API documentation for assesment project"
+    },
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "servers": [
+      {
+        "url": "http://localhost:8000/api"
+      }
+    ],
+    "components": {
+      "schemas": {
+        "RegistrationRequest": {
+          "type": "object",
+          "required": ["name", "email", "password"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "User's name",
+              "format": "name",
+              "example": "John Dow"
+            },
+            "email": {
+              "type": "string",
+              "description": "User's email",
+              "format": "email"
+            },
+            "password": {
+              "type": "string",
+              "description": "User's password",
+              "example": "Qwerty123"
+            }
+          }
+        },
+        "LoginRequest": {
+          "type": "object",
+          "required": ["email", "password"],
+          "properties": {
+            "email": {
+              "type": "string",
+              "description": "User's email",
+              "format": "email"
+            },
+            "password": {
+              "type": "string",
+              "description": "User's password",
+              "example": "Qwerty123"
+            }
+          }
+        },
+        "LoginResponse": {
+          "type": "object",
+          "required": ["email", "password"],
+          "properties": {
+            "email": {
+              "type": "string",
+              "description": "User's email",
+              "format": "email"
+            },
+            "password": {
+              "type": "string",
+              "description": "User's password",
+              "example": "Qwerty123"
+            }
+          }
+        },
+        "UserFullResponse": {
+          "type": "object",
+          "properties": {
+            "userId": {
+              "type": "string",
+              "description": "User's id",
+              "example": "321zssd43232436545474"
+            },
+            "name": {
+              "type": "string",
+              "description": "User's name",
+              "format": "name",
+              "example": "John Dow"
+            },
+            "email": {
+              "type": "string",
+              "description": "User's email",
+              "format": "email"
+            },
+            "token": {
+              "type": "string",
+              "description": "Access token",
+              "example": "iJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjTMzNGRkNDJhMjA1YmNkOSIsImlhdCI6MTY5MDIwMjA4MCwiZXhwIjoxNjkwMjg0ODgwfQ.tMnqxlro4JMvOAMeH2xitW7KVIrz07Ej-n6ES-T5vHg"
+            },
+            "myTest": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "ID's of user's tests"
+              }
+            },
+            "passedTests": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "ID of passed tests by user"
+              }
+            }
+          }
+        },
+        "UserResultResponse": {
+          "type": "object",
+          "properties": {
+            "userId": {
+              "type": "string",
+              "description": "User's id",
+              "example": "321zssd43232436545474"
+            },
+            "name": {
+              "type": "string",
+              "description": "User's name",
+              "format": "name",
+              "example": "John Dow"
+            },
+            "email": {
+              "type": "string",
+              "description": "User's email",
+              "format": "email"
+            },
+            "myTest": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "ID's of user's tests"
+              }
+            },
+            "passedTests": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "ID of passed tests by user"
+              }
+            }
+          }
+        },
+        "TestRequest": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "Test title"
+            },
+            "description": {
+              "type": "string",
+              "description": "Test description"
+            },
+            "questions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "question": {
+                    "type": "string",
+                    "description": "question of the test"
+                  },
+                  "answers": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "variant": { "type": "string" },
+                        "correct": { "type": "boolean" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "TestResponse": {
+          "type": "object",
+          "properties": {
+            "testID": {
+              "type": "string",
+              "description": "Test id",
+              "example": "321zssd43232436545474"
+            },
+            "title": {
+              "type": "string",
+              "description": "Test title"
+            },
+            "description": {
+              "type": "string",
+              "description": "Test description"
+            },
+            "questions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "question": {
+                    "type": "string",
+                    "description": "question of the test"
+                  },
+                  "answers": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "variant": { "type": "string" },
+                        "correct": { "type": "boolean" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "securitySchemes": {
+        "Bearer": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    }
+  },
+  "apis": ["./routes/api/*.js"]
+}
