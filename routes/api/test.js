@@ -13,8 +13,6 @@ const { schemas } = require("../../models/user");
  *   get:
  *     tags: [Test]
  *     summary: Get all tests
- *     security:
- *       - Bearer: []
  *     description: Use this endpoint to get all tests
  *     responses:
  *       '200':
