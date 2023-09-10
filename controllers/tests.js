@@ -32,9 +32,17 @@ const writePassedTest = async (req, res) => {
   const { _id: userId } = req.user;
   const { score } = req.body;
 
-  await User.findByIdAndUpdate(userId, {
-    $push: { passedTests: [{ test: id, score }] },
-  });
+await User.findByIdAndUpdate(
+  userId,
+  {
+    $set: {
+      "passedTests.$[elem].score": score,
+    },
+  },
+  {
+    arrayFilters: [{ "elem.test": id }],
+  }
+);
 
   res.json("Results written.");
 };
