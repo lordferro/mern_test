@@ -185,7 +185,7 @@
         "TestResponse": {
           "type": "object",
           "properties": {
-            "testID": {
+            "_id": {
               "type": "string",
               "description": "Test id",
               "example": "321zssd43232436545474"
